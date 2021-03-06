@@ -1,6 +1,16 @@
 import React, { Component } from "react";
+import $ from 'jquery';
 
 export default class Home extends Component {
+    handleClick(e) {
+        e.preventDefault();
+        console.log('Test')
+        $('html,body').animate({
+            scrollTop: $('.goto-here').offset().top
+        }, 500, "swing");
+        return false;
+    }
+
     render() {
         return (
             <section className="hero-wrap js-fullheight" style={{ height: '1129px' }}>
@@ -18,7 +28,7 @@ export default class Home extends Component {
                     </div>
                 </div>
                 <div className="mouse">
-                    <a href="#" className="mouse-icon">
+                    <a href="#" onClick={this.handleClick} className="mouse-icon">
                         <div className="mouse-wheel"><span className="ion-ios-arrow-round-down" /></div>
                     </a>
                 </div>
