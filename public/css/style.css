@@ -8653,12 +8653,13 @@ h1, h2, h3, h4, h5,
         color: #000000;
         width: 130px; }
 
-.ftco-about .counter-wrap .text p {
+.ftco-about .counter-wrap .text div {
   font-size: 20px; }
-  .ftco-about .counter-wrap .text p span {
+  .ftco-about .counter-wrap .text div span {
     font-weight: 400;
     color: #000000; }
-  .ftco-about .counter-wrap .text p span.number {
+  .ftco-about .counter-wrap .text div span.number {
+    display: inline-flex;
     font-weight: 600;
     color: #3e64ff; }
 

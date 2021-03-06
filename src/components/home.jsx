@@ -4,7 +4,6 @@ import $ from 'jquery';
 export default class Home extends Component {
     handleClick(e) {
         e.preventDefault();
-        console.log('Test')
         $('html,body').animate({
             scrollTop: $('.goto-here').offset().top
         }, 500, "swing");
