@@ -13,9 +13,9 @@ export default class Navbar extends Component {
                         <ul className="navbar-nav nav ml-auto">
                             <li className="nav-item"><a href="#home-section" className="nav-link"><span>Home</span></a></li>
                             <li className="nav-item"><a href="#about-section" className="nav-link"><span>About</span></a></li>
-                            <li className="nav-item"><a href="#resume-section" className="nav-link"><span>Resume</span></a></li>
+                            {/* <li className="nav-item"><a href="#resume-section" className="nav-link"><span>Resume</span></a></li>
                             <li className="nav-item"><a href="#services-section" className="nav-link"><span>Services</span></a></li>
-                            <li className="nav-item"><a href="#contact-section" className="nav-link"><span>Contact</span></a></li>
+                            <li className="nav-item"><a href="#contact-section" className="nav-link"><span>Contact</span></a></li> */}
                         </ul>
                     </div>
                 </div>

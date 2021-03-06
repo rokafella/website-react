@@ -23,7 +23,7 @@ export default class About extends Component {
     render() {
         return (
             <section className="ftco-about img ftco-section ftco-no-pt ftco-no-pb" id="about-section">
-                <div className="container">
+                <div className="container goto-here">
                     <div className="row d-flex no-gutters">
                         <div className="col-md-6 col-lg-6 d-flex">
                             <div className="img-about img d-flex align-items-stretch">
