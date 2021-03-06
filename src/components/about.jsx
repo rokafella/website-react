@@ -32,7 +32,7 @@ export default class About extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-6 col-lg-6 pl-md-5 py-5">
+                        <div className="col-md-6 col-lg-6 pl-md-5 py-5" data-aos="fade-up">
                             <div className="row justify-content-start pb-3">
                                 <div className="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
                                     <h1 className="big">About</h1>

@@ -14,7 +14,7 @@ export default class Home extends Component {
         return (
             <section className="hero-wrap js-fullheight" style={{ height: '1129px' }}>
                 <div className="overlay" />
-                <div className="container">
+                <div className="container" data-aos="fade-up">
                     <div className="row no-gutters slider-text js-fullheight justify-content-center align-items-center" style={{ height: '1129px' }}>
                         <div className="col-lg-8 col-md-6 ftco-animate d-flex align-items-center fadeInUp ftco-animated">
                             <div className="text text-center">
