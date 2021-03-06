@@ -1,8 +1,8 @@
 {
   "name": "website-react",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
-  "homepage": "https://rokafella.github.io/website-react/",
+  "homepage": "https://rohitkapoor.dev",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
