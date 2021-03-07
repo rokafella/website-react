@@ -3,7 +3,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Navbar from "./components/navbar";
 import Home from "./components/home";
-import About from "./components/about"
+import About from "./components/about";
+import Resume from "./components/resume";
 
 class App extends Component {
   componentDidMount() {
@@ -19,6 +20,7 @@ class App extends Component {
         <Navbar />
         <Home />
         <About />
+        <Resume />
       </>
     )
   }
