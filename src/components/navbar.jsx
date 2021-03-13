@@ -1,6 +1,64 @@
 import React, { Component } from "react";
+import $ from 'jquery';
 
 export default class Navbar extends Component {
+    componentDidMount() {
+        $(function () {
+            $('body').on('click', '.js-fh5co-nav-toggle', function (event) {
+                event.preventDefault();
+
+                if ($('#ftco-nav').is(':visible')) {
+                    $(this).removeClass('active');
+                } else {
+                    $(this).addClass('active');
+                }
+            });
+
+            $(document).on('click', '#ftco-nav a[href^="#"]', function (event) {
+                event.preventDefault();
+                $('html, body').animate({
+                    scrollTop: $($.attr(this, 'href')).offset().top - 70
+                }, 500);
+            });
+
+            $(window).on('scroll', function () {
+                var $w = $(this),
+                    st = $w.scrollTop(),
+                    navbar = $('.ftco_navbar'),
+                    sd = $('.js-scroll-wrap');
+
+                if (st > 150) {
+                    if (!navbar.hasClass('scrolled')) {
+                        navbar.addClass('scrolled');
+                    }
+                }
+                if (st < 150) {
+                    if (navbar.hasClass('scrolled')) {
+                        navbar.removeClass('scrolled sleep');
+                    }
+                }
+                if (st > 350) {
+                    if (!navbar.hasClass('awake')) {
+                        navbar.addClass('awake');
+                    }
+
+                    if (sd.length > 0) {
+                        sd.addClass('sleep');
+                    }
+                }
+                if (st < 350) {
+                    if (navbar.hasClass('awake')) {
+                        navbar.removeClass('awake');
+                        navbar.addClass('sleep');
+                    }
+                    if (sd.length > 0) {
+                        sd.removeClass('sleep');
+                    }
+                }
+            });
+        });
+    }
+
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">

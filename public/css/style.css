@@ -9223,11 +9223,6 @@ textarea.form-control {
   background-repeat: no-repeat;
   background-position: center center; }
 
-.image-popup {
-  cursor: -webkit-zoom-in;
-  cursor: -moz-zoom-in;
-  cursor: zoom-in; }
-
 .mfp-with-zoom .mfp-container,
 .mfp-with-zoom.mfp-bg {
   opacity: 0;

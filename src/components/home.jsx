@@ -79,7 +79,7 @@ export default class Home extends Component {
 
     render() {
         return (
-            <section className="hero-wrap js-fullheight" style={{ height: '1129px' }}>
+            <section className="hero-wrap js-fullheight" style={{ height: '1129px' }} id="home-section">
                 <div className="overlay" />
                 <div className="container">
                     <div className="row no-gutters slider-text js-fullheight justify-content-center align-items-center" style={{ height: '1129px' }}>
