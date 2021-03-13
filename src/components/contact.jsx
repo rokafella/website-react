@@ -49,11 +49,11 @@ export default class Contact extends Component {
                         <div className="col-md-6 col-lg-3 d-flex" data-aos="zoom-in">
                             <div className="align-self-stretch box text-center p-4 shadow">
                                 <div className="icon d-flex align-items-center justify-content-center">
-                                    <span className="icon-globe" />
+                                    <span className="icon-instagram" />
                                 </div>
                                 <div>
-                                    <h3 className="mb-4">Website</h3>
-                                    <p><a href="https://rohitkapoor.dev" target="_blank" rel="noreferrer">rohitkapoor.dev</a></p>
+                                    <h3 className="mb-4">Instagram</h3>
+                                    <p><a href="https://www.instagram.com/roka_fella/" target="_blank" rel="noreferrer">roka_fella</a></p>
                                 </div>
                             </div>
                         </div>

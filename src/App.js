@@ -6,6 +6,7 @@ import Home from "./components/home";
 import About from "./components/about";
 import Resume from "./components/resume";
 import Contact from "./components/contact";
+import Footer from "./components/footer";
 
 class App extends Component {
   componentDidMount() {
@@ -23,6 +24,7 @@ class App extends Component {
         <About />
         <Resume />
         <Contact />
+        <Footer />
       </>
     )
   }
