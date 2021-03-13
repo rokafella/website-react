@@ -8469,6 +8469,7 @@ h1, h2, h3, h4, h5,
   width: 70px;
   height: 70px;
   border: 1px solid transparent;
+  background-color: transparent;
   cursor: pointer;
   position: relative;
   text-align: center;
@@ -8486,6 +8487,9 @@ h1, h2, h3, h4, h5,
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg); }
+    .mouse-icon:focus {
+      outline: 0 !important;
+    }
 
 .mouse-wheel {
   height: 70px;

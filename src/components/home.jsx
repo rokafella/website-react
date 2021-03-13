@@ -2,6 +2,15 @@ import React, { Component } from "react";
 import $ from 'jquery';
 
 export default class Home extends Component {
+    componentDidMount() {
+        $(function () {
+            $('.js-fullheight').css('height', $(window).height());
+            $(window).on('resize', function () {
+                $('.js-fullheight').css('height', $(window).height());
+            });
+        });
+    }
+
     handleClick(e) {
         e.preventDefault();
         $('html,body').animate({
@@ -16,7 +25,7 @@ export default class Home extends Component {
                 <div className="overlay" />
                 <div className="container">
                     <div className="row no-gutters slider-text js-fullheight justify-content-center align-items-center" style={{ height: '1129px' }}>
-                        <div className="col-lg-8 col-md-6 ftco-animate d-flex align-items-center fadeInUp ftco-animated">
+                        <div className="col-lg-8 col-md-6 d-flex align-items-center">
                             <div className="text text-center">
                                 <span className="subheading">Hey! I am</span>
                                 <h1>Rohit Kapoor</h1>
@@ -27,9 +36,7 @@ export default class Home extends Component {
                     </div>
                 </div>
                 <div className="mouse">
-                    <a href="#" onClick={this.handleClick} className="mouse-icon">
-                        <div className="mouse-wheel"><span className="ion-ios-arrow-round-down" /></div>
-                    </a>
+                    <button onClick={this.handleClick} className="mouse-icon"><div className="mouse-wheel"><span className="ion-ios-arrow-round-down" /></div></button>
                 </div>
             </section>
         )

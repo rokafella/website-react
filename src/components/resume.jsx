@@ -47,7 +47,7 @@ export default class Resume extends Component {
 
     render() {
         return (
-            <section className="ftco-section ftco-no-pb goto-here" id="resume-section">
+            <section className="ftco-section ftco-no-pb" id="resume-section">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-3">
@@ -61,7 +61,7 @@ export default class Resume extends Component {
                         <div className="col-md-9">
                             <div id="page-1" className="page one">
                                 <h2 className="heading">Experience</h2>
-                                <div className="resume-wrap d-flex ftco-animate fadeInUp ftco-animated">
+                                <div className="resume-wrap d-flex">
                                     <div className="icon d-flex align-items-center justify-content-center" data-aos="fade-up">
                                         <span className="flaticon-ideas" />
                                     </div>
@@ -72,7 +72,7 @@ export default class Resume extends Component {
                                         <p>Currently working with high volume core AWS services like AWS CloudTrail and S3.</p>
                                     </div>
                                 </div>
-                                <div className="resume-wrap d-flex ftco-animate fadeInUp ftco-animated">
+                                <div className="resume-wrap d-flex">
                                     <div className="icon d-flex align-items-center justify-content-center" data-aos="fade-up">
                                         <span className="flaticon-ideas" />
                                     </div>
@@ -83,7 +83,7 @@ export default class Resume extends Component {
                                         <p>Taught Introduction to Database Systems to undergraduate students.</p>
                                     </div>
                                 </div>
-                                <div className="resume-wrap d-flex ftco-animate fadeInUp ftco-animated">
+                                <div className="resume-wrap d-flex">
                                     <div className="icon d-flex align-items-center justify-content-center" data-aos="fade-up">
                                         <span className="flaticon-ideas" />
                                     </div>
@@ -94,7 +94,7 @@ export default class Resume extends Component {
                                         <p>Added new customer facing APIs which impacted millions of customers worldwide and was launched to production before the end of the internship.</p>
                                     </div>
                                 </div>
-                                <div className="resume-wrap d-flex ftco-animate fadeInUp ftco-animated">
+                                <div className="resume-wrap d-flex">
                                     <div className="icon d-flex align-items-center justify-content-center" data-aos="fade-up">
                                         <span className="flaticon-ideas" />
                                     </div>
@@ -108,7 +108,7 @@ export default class Resume extends Component {
                             </div>
                             <div id="page-2" className="page two">
                                 <h2 className="heading">Education</h2>
-                                <div className="resume-wrap d-flex ftco-animate fadeInUp ftco-animated">
+                                <div className="resume-wrap d-flex">
                                     <div className="icon d-flex align-items-center justify-content-center" data-aos="fade-up">
                                         <span className="flaticon-ideas" />
                                     </div>
@@ -119,13 +119,13 @@ export default class Resume extends Component {
                                         <p>Columbus, USA</p>
                                     </div>
                                 </div>
-                                <div className="resume-wrap d-flex ftco-animate fadeInUp ftco-animated">
+                                <div className="resume-wrap d-flex">
                                     <div className="icon d-flex align-items-center justify-content-center" data-aos="fade-up">
                                         <span className="flaticon-ideas" />
                                     </div>
                                     <div className="text pl-3" data-aos="fade-up">
                                         <span className="date">2010 - 2014</span>
-                                        <h2>Bachelor of Science in Computer Science &amp; Engineering</h2>
+                                        <h2>Bachelor of Technology in Computer Science &amp; Engineering</h2>
                                         <span className="position">Amity University</span>
                                         <p>Noida, India</p>
                                     </div>

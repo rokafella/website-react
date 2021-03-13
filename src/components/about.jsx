@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import { Waypoint } from 'react-waypoint';
 import AnimatedNumber from "react-animated-numbers"
 
@@ -34,7 +34,7 @@ export default class About extends Component {
                         </div>
                         <div className="col-md-6 col-lg-6 pl-md-5 py-5" data-aos="fade-up">
                             <div className="row justify-content-start pb-3">
-                                <div className="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
+                                <div className="col-md-12 heading-section">
                                     <h1 className="big">About</h1>
                                     <h2 className="mb-4">About Me</h2>
                                     <p>A random collection of atoms finding its way through stardust.</p>
@@ -46,7 +46,7 @@ export default class About extends Component {
                                     </ul>
                                 </div>
                             </div>
-                            <div className="counter-wrap ftco-animate d-flex mt-md-3 fadeInUp ftco-animated">
+                            <div className="counter-wrap d-flex mt-md-3">
                                 <Waypoint onEnter={this.handleEnter} onLeave={this.handleExit}>
                                     <div className="text" >
                                         <div className="mb-4">
