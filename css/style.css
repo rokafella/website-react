@@ -9641,6 +9641,25 @@ textarea.form-control {
   animation: loader-dash 1.5s ease-in-out infinite;
   stroke-linecap: round; }
 
+.Loading {
+  animation: loader-rotate 2s linear infinite;
+  position: block;
+  border: 5px solid #f3f3f3; /* Light grey */
+  border-top: 5px solid #444; /* Blue */
+  border-radius: 100%;
+  width: 5vh;
+  height: 5vh;
+}
+
+.Feed a {
+  padding: 1em;
+}
+
+.Feed a img {
+  animation: fadein 3s;
+  width: 100%;
+}
+
 @-webkit-keyframes loader-rotate {
   100% {
     -webkit-transform: rotate(360deg);
@@ -9672,3 +9691,12 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
