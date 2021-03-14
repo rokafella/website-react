@@ -7,6 +7,7 @@ import Navbar from "./components/navbar";
 import Home from "./components/home";
 import About from "./components/about";
 import Resume from "./components/resume";
+import InstaFeed from "./components/instafeed";
 import Contact from "./components/contact";
 import Footer from "./components/footer";
 import Loader from "./components/loader";
@@ -28,6 +29,7 @@ class App extends Component {
         <Home />
         <About />
         <Resume />
+        <InstaFeed />
         <Contact />
         <Footer />
         <Loader />

@@ -72,6 +72,7 @@ export default class Navbar extends Component {
                             <li className="nav-item"><a href="#home-section" className="nav-link"><span>Home</span></a></li>
                             <li className="nav-item"><a href="#about-section" className="nav-link"><span>About</span></a></li>
                             <li className="nav-item"><a href="#resume-section" className="nav-link"><span>Resume</span></a></li>
+                            <li className="nav-item"><a href="#feed-section" className="nav-link"><span>Photos</span></a></li>
                             <li className="nav-item"><a href="#contact-section" className="nav-link"><span>Contact</span></a></li>
                         </ul>
                     </div>
