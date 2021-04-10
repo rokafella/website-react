@@ -11,6 +11,8 @@ import InstaFeed from "./components/instafeed";
 import Contact from "./components/contact";
 import Footer from "./components/footer";
 import Loader from "./components/loader";
+import Privacy from './components/privacy';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class App extends Component {
   componentDidMount() {
@@ -24,16 +26,23 @@ class App extends Component {
 
   render() {
     return (
-      <>
-        <Navbar />
-        <Home />
-        <About />
-        <Resume />
-        <InstaFeed />
-        <Contact />
-        <Footer />
-        <Loader />
-      </>
+      <Router>
+        <Switch>
+          <Route exact path="/trackmyscore/privacy">
+            <Privacy />
+          </Route>
+          <Route path="/">
+            <Navbar />
+            <Home />
+            <About />
+            <Resume />
+            <InstaFeed />
+            <Contact />
+            <Footer />
+            <Loader />
+          </Route>
+        </Switch>
+      </Router>
     )
   }
 }

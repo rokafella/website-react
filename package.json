@@ -13,6 +13,7 @@
     "react-animated-numbers": "^0.2.2",
     "react-dom": "^17.0.1",
     "react-instagram-authless-feed": "github:jamesmoriarty/react-instagram-authless-feed#v2.0.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-waypoint": "^9.0.3",
     "scrollax": "^1.0.0",
