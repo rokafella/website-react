@@ -12,7 +12,7 @@ import Contact from "./components/contact";
 import Footer from "./components/footer";
 import Loader from "./components/loader";
 import Privacy from './components/privacy';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
 class App extends Component {
   componentDidMount() {
@@ -26,11 +26,9 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+      <Router basename="/">
         <Switch>
-          <Route exact path="/trackmyscore/privacy">
-            <Privacy />
-          </Route>
+          <Route exact path="/trackmyscore" component={Privacy} />
           <Route path="/">
             <Navbar />
             <Home />
