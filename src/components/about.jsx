@@ -40,7 +40,7 @@ export default class About extends Component {
                                     <p>A random collection of atoms finding its way through stardust.</p>
                                     <ul className="about-info mt-4 px-md-0 px-2">
                                         <li className="d-flex"><span>Name:</span> <span>Rohit Kapoor</span></li>
-                                        <li className="d-flex"><span>Location:</span> <span>Cambridge UK</span></li>
+                                        <li className="d-flex"><span>Location:</span> <span>London UK</span></li>
                                         <li className="d-flex"><span>Currently @:</span> <span>Amazon Web Services</span></li>
                                         <li className="d-flex"><span>Email:</span> <span>info@rohitkapoor.dev</span></li>
                                     </ul>

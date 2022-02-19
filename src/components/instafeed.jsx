@@ -1,30 +1,6 @@
 import React, { Component } from "react";
-import Feed from "react-instagram-authless-feed"
-
-class ErrorBoundary extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { hasError: false };
-    }
-
-    static getDerivedStateFromError(error) {
-        return { hasError: true };
-    }
-
-    componentDidCatch(error, errorInfo) {
-        // You can also log the error to an error reporting service
-    }
-
-    render() {
-        if (this.state.hasError) {
-            return (
-                <div>
-                </div>
-            );
-        }
-        return this.props.children;
-    }
-}
+import InstagramFeed from 'react-ig-feed'
+import 'react-ig-feed/dist/index.css'
 
 export default class InstaFeed extends Component {
     render() {
@@ -37,10 +13,8 @@ export default class InstaFeed extends Component {
                             <p>Follow on instagram for more!</p>
                         </div>
                     </div>
-                    <div className="row no-gutters justify-content-center">
-                        <ErrorBoundary>
-                            <Feed userName="roka_fella" className="Feed row justify-content-center pb-5" classNameLoading="Loading" limit="3" />
-                        </ErrorBoundary>
+                    <div className="row justify-content-center" data-aos="fade-zoom-in">
+                        <InstagramFeed token="IGQVJVZAlc1cjZAYZAzc5SGl2QlVYQkR5ZAHN1X0tYMEEtSVBCcmhPLVNZAeUhDdXRxTkFaTnJheHNHaGVvLUV3b2k4RWxBOUdWMy1zQmh3UzZAabzRHQ29POU9Vc0lfV0doU0VncU1zTk53Y2hYbXYzOTVWOQZDZD" counter="6" />
                     </div>
                 </div>
             </section>

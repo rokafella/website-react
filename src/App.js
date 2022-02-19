@@ -12,7 +12,7 @@ import Contact from "./components/contact";
 import Footer from "./components/footer";
 import Loader from "./components/loader";
 import Privacy from './components/privacy';
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 class App extends Component {
   componentDidMount() {
@@ -27,19 +27,10 @@ class App extends Component {
   render() {
     return (
       <Router basename="/">
-        <Switch>
-          <Route exact path="/trackmyscore" component={Privacy} />
-          <Route path="/">
-            <Navbar />
-            <Home />
-            <About />
-            <Resume />
-            <InstaFeed />
-            <Contact />
-            <Footer />
-            <Loader />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route exact path="/trackmyscore" element={<Privacy />} />
+          <Route path="/" element={<><Navbar /><Home /><About /><Resume /><InstaFeed /><Contact /><Footer /><Loader /></>} />
+        </Routes>
       </Router>
     )
   }

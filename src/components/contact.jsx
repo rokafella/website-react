@@ -20,7 +20,7 @@ export default class Contact extends Component {
                                 </div>
                                 <div>
                                     <h3 className="mb-4">Location</h3>
-                                    <p>Cambridge, UK</p>
+                                    <p>London, UK</p>
                                 </div>
                             </div>
                         </div>
