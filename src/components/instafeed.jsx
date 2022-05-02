@@ -14,7 +14,7 @@ export default class InstaFeed extends Component {
                         </div>
                     </div>
                     <div className="row justify-content-center" data-aos="fade-zoom-in">
-                        <InstagramFeed token="IGQVJVZAlc1cjZAYZAzc5SGl2QlVYQkR5ZAHN1X0tYMEEtSVBCcmhPLVNZAeUhDdXRxTkFaTnJheHNHaGVvLUV3b2k4RWxBOUdWMy1zQmh3UzZAabzRHQ29POU9Vc0lfV0doU0VncU1zTk53Y2hYbXYzOTVWOQZDZD" counter="6" />
+                        <InstagramFeed token="IGQVJVbC01NVF3TnloSVZACUlJvd3BHYno2YzNqdlNGT0EtaDkyV3UxcFBPRThXMjZAwQS1EaE5SLWlNOEpGYVN0ZAGo0WGNNREVickw5aDhDTEp5VDJ0MWZAsU0UxcG1Ka295Vkt2YjM0d09aV3hjR0hRegZDZD" counter="6" />
                     </div>
                 </div>
             </section>
