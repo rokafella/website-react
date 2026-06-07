@@ -167,7 +167,15 @@
     countObserver.observe(statBand);
   }
 
-  /* ---------------- 5. parallax depth (unused but kept for data-parallax elements) ---------------- */
+  /* ---------------- 5. sys online blur on scroll ---------------- */
+  const sysTl = document.querySelector('.telemetry .corner.tl');
+  if (sysTl) {
+    const updateSys = () => sysTl.classList.toggle('sys-away', window.scrollY > 20);
+    window.addEventListener('scroll', updateSys, { passive: true });
+    updateSys();
+  }
+
+  /* ---------------- 6. parallax depth (unused but kept for data-parallax elements) ---------------- */
   if (!reduce) {
     const layers = document.querySelectorAll('[data-parallax]');
     let ticking = false;
@@ -250,5 +258,151 @@
       if (e.key === 'ArrowRight') go(idx + 1);
       if (e.key === 'ArrowLeft') go(idx - 1);
     });
+    // swipe gestures
+    let tsX = 0;
+    lb.addEventListener('touchstart', e => { tsX = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - tsX;
+      if (Math.abs(dx) > 50) dx < 0 ? go(idx + 1) : go(idx - 1);
+    }, { passive: true });
   }
+
+  /* ---------------- 8. typewriter kicker ---------------- */
+  const kicker = document.querySelector('.hero__kicker .mono:last-child');
+  if (kicker && !reduce) {
+    const text = kicker.textContent;
+    kicker.textContent = '|';
+    let i = 0;
+    const type = () => {
+      i++;
+      if (i < text.length) {
+        kicker.textContent = text.slice(0, i) + '|';
+        setTimeout(type, 48);
+      } else {
+        kicker.textContent = text;
+      }
+    };
+    setTimeout(type, 700);
+  }
+
+  /* ---------------- 9. matrix glitch on section numbers (repeating) ---------------- */
+  if (!reduce) {
+    const glitchChars = 'ｦｧｨｩｪｫｬｭｮｯｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ!@#$%^&*';
+    function matrixGlitch(el, final) {
+      const charState = [...final].map((target, i) => ({
+        target,
+        settleAt: 300 + i * 180 + Math.random() * 100,
+        settled: false,
+      }));
+      const start = performance.now();
+      el.style.color = 'var(--ink)';
+      let rafId;
+      function tick(now) {
+        const elapsed = now - start;
+        let done = true;
+        el.textContent = charState.map(c => {
+          if (!c.settled && elapsed >= c.settleAt) c.settled = true;
+          if (c.settled) return c.target;
+          done = false;
+          return glitchChars[Math.floor(Math.random() * glitchChars.length)];
+        }).join('');
+        if (!done) { rafId = requestAnimationFrame(tick); }
+        else { el.textContent = final; el.style.color = ''; }
+      }
+      rafId = requestAnimationFrame(tick);
+      return () => { cancelAnimationFrame(rafId); el.style.color = ''; el.textContent = final; };
+    }
+
+    function attachGlitch(el, orig, initialDelay = 0) {
+      let cancel = null;
+      let repeatIv = null;
+      function start() {
+        if (repeatIv) return;
+        cancel = matrixGlitch(el, orig);
+        repeatIv = setInterval(() => {
+          if (cancel) cancel();
+          cancel = matrixGlitch(el, orig);
+        }, 5000);
+      }
+      function stop() {
+        if (cancel) cancel();
+        clearInterval(repeatIv);
+        repeatIv = null; cancel = null;
+        el.textContent = orig; el.style.color = '';
+      }
+      return { start, stop };
+    }
+
+    // Hero 01 — always in viewport, trigger after load
+    const heroIdx = document.querySelector('.hero__kicker .hero-num');
+    if (heroIdx) {
+      const orig = heroIdx.textContent;
+      const g = attachGlitch(heroIdx, orig);
+      setTimeout(g.start, 1200);
+    }
+
+    // Section headings 02–04 — trigger via IO
+    document.querySelectorAll('.sec-head').forEach(head => {
+      const idx = head.querySelector('.idx');
+      if (!idx) return;
+      const orig = idx.textContent;
+      const g = attachGlitch(idx, orig);
+      const obs = new IntersectionObserver(([e]) => {
+        if (e.isIntersecting) g.start();
+        else g.stop();
+      }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+      obs.observe(head);
+    });
+  }
+
+  /* ---------------- 10. gallery parallax ---------------- */
+  const frameImgs = [...document.querySelectorAll('.frame__img')];
+  if (frameImgs.length && !reduce) {
+    const updateParallax = () => {
+      frameImgs.forEach(img => {
+        const rect = img.closest('.frame').getBoundingClientRect();
+        const center = rect.top + rect.height / 2;
+        const offset = ((window.innerHeight / 2 - center) / window.innerHeight) * 160;
+        img.style.transform = `translateY(${Math.max(-140, Math.min(140, offset))}px)`;
+      });
+    };
+    window.addEventListener('scroll', updateParallax, { passive: true });
+    updateParallax();
+  }
+
+  /* ---------------- 11. magnetic elements ---------------- */
+  if (fine) {
+    function makeMagnetic(el, strength = 0.35) {
+      el.classList.remove('shown');
+      // Force inline transition every pointermove — overrides .reveal's 0.9s and shown's none
+      el.addEventListener('pointermove', e => {
+        el.classList.remove('shown');
+        el.style.transition = 'transform 0.15s cubic-bezier(0.22,1,0.36,1)';
+        const r = el.getBoundingClientRect();
+        const dx = (e.clientX - (r.left + r.width / 2)) * strength;
+        const dy = (e.clientY - (r.top + r.height / 2)) * strength;
+        el.style.transform = `translate(${dx}px, ${dy}px)`;
+      });
+      el.addEventListener('pointerleave', () => {
+        el.style.transition = 'transform 0.5s cubic-bezier(0.22,1,0.36,1)';
+        el.style.transform = '';
+      });
+    }
+
+    document.querySelectorAll('.contact__links a').forEach(el => makeMagnetic(el, 0.35));
+    const mailEl = document.querySelector('.contact__mail');
+    if (mailEl) makeMagnetic(mailEl, 0.18);
+
+    // Work section — numbers only, not labels
+    document.querySelectorAll('.stat .num').forEach(el => makeMagnetic(el, 0.3));
+  }
+
+  /* ---------------- 14. image shimmer ---------------- */
+  document.querySelectorAll('.frame[data-src]').forEach(frame => {
+    frame.classList.add('img-loading');
+    const img = new Image();
+    img.onload = () => frame.classList.remove('img-loading');
+    img.src = frame.dataset.src;
+  });
+
 })();

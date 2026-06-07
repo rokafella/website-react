@@ -81,6 +81,7 @@ img, canvas { display: block; max-width: 100%; }
   font-weight: 400;
 }
 .mono--accent { color: var(--accent); }
+.hero-num { display: inline-block; width: 2.2ch; white-space: nowrap; overflow: visible; vertical-align: baseline; }
 
 .tick { color: var(--accent); }
 
@@ -99,7 +100,14 @@ img, canvas { display: block; max-width: 100%; }
   margin-bottom: var(--s6);
   flex-wrap: wrap;
 }
-.sec-head .idx { color: var(--accent); }
+.sec-head .idx {
+  color: var(--accent);
+  display: inline-block;
+  width: 2.2ch;
+  white-space: nowrap;
+  overflow: visible;
+  vertical-align: baseline;
+}
 .sec-head .title {
   font-family: var(--display);
   font-size: var(--fs-h2);
@@ -131,7 +139,14 @@ img, canvas { display: block; max-width: 100%; }
   font-family: var(--mono); font-size: var(--fs-mono);
   letter-spacing: 0.14em; color: var(--faint); text-transform: uppercase;
 }
-.telemetry .corner.tl { top: var(--s4); left: var(--edge); }
+.telemetry .corner.tl {
+  top: var(--s4); left: var(--edge);
+  transition: opacity 0.6s var(--ease), filter 0.6s var(--ease);
+}
+.telemetry .corner.tl.sys-away {
+  opacity: 0.15;
+  filter: blur(3px);
+}
 .telemetry .corner.tr { top: var(--s4); right: var(--edge); text-align: right; }
 .telemetry .corner.bl { bottom: var(--s4); left: var(--edge); }
 .telemetry .corner.br { bottom: var(--s4); right: var(--edge); text-align: right; }
@@ -358,10 +373,11 @@ img, canvas { display: block; max-width: 100%; }
   cursor: pointer;
 }
 .frame__img {
-  position: absolute; inset: 0; z-index: 1;
-  background-size: cover; background-position: center;
+  position: absolute; inset: -12% 0; z-index: 1;
+  background-size: cover; background-position: center 50%;
   pointer-events: none;
   -webkit-user-select: none; user-select: none;
+  will-change: transform;
 }
 /* overlay blocks right-click and carries the bottom gradient */
 .frame__guard {
@@ -518,7 +534,7 @@ img, canvas { display: block; max-width: 100%; }
   font-family: var(--display); font-weight: 700;
   font-size: clamp(1.5rem, 0.7rem + 3vw, 4rem); letter-spacing: -0.03em;
   line-height: 0.95; color: var(--ink); display: inline-block;
-  transition: color .3s var(--ease);
+  transition: transform 0.4s var(--ease), color 0.3s var(--ease);
   white-space: nowrap; max-width: 100%;
 }
 .contact__mail:hover { color: var(--accent); }
@@ -532,7 +548,7 @@ img, canvas { display: block; max-width: 100%; }
 .contact__links a .k { color: var(--faint); font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; }
 .contact__links a .v { color: var(--ink); font-weight: 450; transition: color .25s; }
 .contact__links a:hover .v { color: var(--accent); }
-.contact__sig { text-align: right; color: var(--faint); }
+.contact__sig { text-align: right; color: var(--faint); margin-left: auto; }
 .contact__base {
   margin-top: var(--s6); padding-top: var(--s3);
   border-top: 1px solid var(--line);
@@ -559,3 +575,19 @@ img, canvas { display: block; max-width: 100%; }
 
 /* keep content above fixed telemetry */
 main, .contact { position: relative; z-index: 2; }
+
+/* ============================ image shimmer ============================ */
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.frame.img-loading::before {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background: linear-gradient(90deg, var(--bg-2) 25%, var(--bg-3) 50%, var(--bg-2) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+/* ============================ magnetic elements ============================ */
+.contact__links a { transition: transform 0.4s var(--ease), color 0.25s; }
+.stat .num { display: inline-block; }
