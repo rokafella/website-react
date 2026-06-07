@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TrackMyScore — Privacy Policy</title>
+<style>
+  :root {
+    --bg: oklch(0.148 0.012 248);
+    --ink: oklch(0.962 0.004 248);
+    --muted: oklch(0.685 0.012 248);
+    --faint: oklch(0.480 0.014 248);
+    --accent: oklch(0.847 0.128 196);
+    --line: oklch(0.96 0.01 248 / 0.12);
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+    --body: "Hanken Grotesk", system-ui, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap {
+    max-width: 680px;
+    margin: auto;
+    padding: 4rem 1.5rem;
+  }
+  .kicker {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+  }
+  .divider {
+    height: 1px;
+    background: var(--line);
+    margin: 2rem 0;
+  }
+  p {
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  p strong { color: var(--ink); font-weight: 500; }
+  .back {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin-top: 3rem;
+    display: inline-block;
+  }
+  .back:hover { color: var(--accent); text-decoration: none; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="wrap">
+    <p class="kicker">TrackMyScore · Privacy Policy</p>
+    <h1>We don't store your data. Period.</h1>
+    <div class="divider"></div>
+    <p>
+      <strong>No data from your App ever leaves your device</strong> — not even the logs.
+      TrackMyScore is designed to work entirely on-device. Your scores, history,
+      and any personal information you enter stay local to your phone.
+    </p>
+    <p>
+      We do not collect, transmit, or store any data on external servers.
+      There are no analytics, no crash reporting that sends data off-device,
+      and no advertising identifiers.
+    </p>
+    <p>
+      For any questions or concerns, contact
+      <a href="mailto:info@rohitkapoor.dev">info@rohitkapoor.dev</a>.
+    </p>
+    <a class="back" href="/">← rohitkapoor.dev</a>
+  </div>
+</body>
+</html>
