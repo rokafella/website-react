@@ -358,12 +358,30 @@
   /* ---------------- 10. gallery parallax ---------------- */
   const frameImgs = [...document.querySelectorAll('.frame__img')];
   if (frameImgs.length && !reduce) {
+    let frameCache = [];
+    function cacheFrames() {
+      frameCache = frameImgs.map(img => {
+        const frame = img.closest('.frame');
+        const rect = frame.getBoundingClientRect();
+        return { img, top: rect.top + window.scrollY, height: rect.height };
+      });
+    }
+    cacheFrames();
+    window.addEventListener('resize', cacheFrames, { passive: true });
+
+    let pTicking = false;
     const updateParallax = () => {
-      frameImgs.forEach(img => {
-        const rect = img.closest('.frame').getBoundingClientRect();
-        const center = rect.top + rect.height / 2;
-        const offset = ((window.innerHeight / 2 - center) / window.innerHeight) * 160;
-        img.style.transform = `translateY(${Math.max(-140, Math.min(140, offset))}px)`;
+      if (pTicking) return;
+      pTicking = true;
+      requestAnimationFrame(() => {
+        const sy = window.scrollY;
+        const vh = window.innerHeight;
+        frameCache.forEach(({ img, top, height }) => {
+          const center = top + height / 2 - sy;
+          const offset = ((vh / 2 - center) / vh) * 160;
+          img.style.transform = `translate3d(0,${Math.max(-140, Math.min(140, offset))}px,0)`;
+        });
+        pTicking = false;
       });
     };
     window.addEventListener('scroll', updateParallax, { passive: true });

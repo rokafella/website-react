@@ -144,8 +144,7 @@ img, canvas { display: block; max-width: 100%; }
   transition: opacity 0.6s var(--ease), filter 0.6s var(--ease);
 }
 .telemetry .corner.tl.sys-away {
-  opacity: 0.15;
-  filter: blur(3px);
+  opacity: 0.12;
 }
 .telemetry .corner.tr { top: var(--s4); right: var(--edge); text-align: right; }
 .telemetry .corner.bl { bottom: var(--s4); left: var(--edge); }
@@ -377,7 +376,6 @@ img, canvas { display: block; max-width: 100%; }
   background-size: cover; background-position: center 50%;
   pointer-events: none;
   -webkit-user-select: none; user-select: none;
-  will-change: transform;
 }
 /* overlay blocks right-click and carries the bottom gradient */
 .frame__guard {
@@ -414,7 +412,7 @@ img, canvas { display: block; max-width: 100%; }
 .frame .expand {
   position: absolute; top: 12px; right: 12px; z-index: 4;
   width: 30px; height: 30px; border: 1px solid var(--line-strong);
-  background: oklch(0.12 0.01 248 / 0.55); backdrop-filter: blur(4px);
+  background: oklch(0.08 0.01 248 / 0.80);
   display: grid; place-items: center; opacity: 0;
   transition: opacity .35s var(--ease), border-color .25s;
 }
