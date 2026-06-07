@@ -86,7 +86,7 @@ img, canvas { display: block; max-width: 100%; }
 
 .section {
   position: relative;
-  padding: var(--s6) var(--edge);
+  padding: var(--s4) var(--edge);
   max-width: var(--maxw);
   margin-inline: auto;
 }
@@ -337,7 +337,6 @@ img, canvas { display: block; max-width: 100%; }
 }
 
 /* ============================ PHOTOGRAPHY ============================ */
-#work { padding-top: var(--s4); padding-bottom: var(--s4); }
 .photo-section { max-width: none; padding-inline: 0; padding-top: var(--s4); }
 .photo-section .sec-head { padding-inline: var(--edge); max-width: var(--maxw); margin-inline: auto; }
 .photo-intro {
