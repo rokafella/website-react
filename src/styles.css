@@ -355,11 +355,20 @@ img, canvas { display: block; max-width: 100%; }
   position: relative; overflow: hidden;
   background: var(--bg-2);
   border: 1px solid var(--line);
+  cursor: pointer;
 }
-.frame image-slot { position: relative; z-index: 1; width: 100%; height: 100%; color: var(--muted); background: transparent; }
-/* hide the slot's built-in empty visuals; our light-DOM placeholder shows instead */
-.frame image-slot::part(empty) { background: transparent; color: transparent; }
-/* always-rendered placeholder field behind the slot */
+.frame__img {
+  position: absolute; inset: 0; z-index: 1;
+  background-size: cover; background-position: center;
+  pointer-events: none;
+  -webkit-user-select: none; user-select: none;
+}
+/* overlay blocks right-click and carries the bottom gradient */
+.frame__guard {
+  position: absolute; inset: 0; z-index: 2;
+  -webkit-user-select: none; user-select: none;
+  background: linear-gradient(to top, rgba(5, 6, 10, 0.9) 0%, rgba(5, 6, 10, 0.5) 35%, transparent 65%);
+}
 .frame__ph {
   position: absolute; inset: 0; z-index: 0;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -379,12 +388,9 @@ img, canvas { display: block; max-width: 100%; }
   position: absolute; left: 0; bottom: 0; z-index: 3;
   padding: 14px 16px; width: 100%;
   display: flex; justify-content: space-between; gap: 12px; align-items: flex-end;
-  background: linear-gradient(transparent, oklch(0.10 0.01 248 / 0.85));
-  opacity: 0; transform: translateY(8px);
-  transition: opacity .4s var(--ease), transform .4s var(--ease);
   pointer-events: none;
+  opacity: 1; transform: none;
 }
-.frame:hover .cap { opacity: 1; transform: none; }
 .frame .cap .place { font-family: var(--mono); font-size: var(--fs-mono);
   letter-spacing: 0.12em; color: var(--ink); text-transform: uppercase; }
 .frame .cap .coord { font-family: var(--mono); font-size: 0.62rem;

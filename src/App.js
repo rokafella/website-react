@@ -196,8 +196,15 @@
     fmt(); setInterval(fmt, 1000);
   }
 
-  /* ---------------- 6. lightbox ---------------- */
-  const frames = [...document.querySelectorAll('.frame')];
+  /* ---------------- 6. photo protection (gallery only, not lightbox) ---------------- */
+  const gallery = document.querySelector('.gallery');
+  if (gallery) {
+    gallery.addEventListener('contextmenu', e => e.preventDefault());
+    gallery.addEventListener('dragstart', e => e.preventDefault());
+  }
+
+  /* ---------------- 7. lightbox ---------------- */
+  const frames = [...document.querySelectorAll('.frame[data-src]')];
   const lb = document.getElementById('lightbox');
   if (lb && frames.length) {
     const stage = lb.querySelector('.lightbox__stage');
@@ -205,24 +212,14 @@
     const capC = lb.querySelector('.lightbox__cap .c');
     let idx = 0;
 
-    function imgFor(frame) {
-      const slot = frame.querySelector('image-slot');
-      const inner = slot && slot.shadowRoot && slot.shadowRoot.querySelector('img');
-      const url = inner && inner.src && !inner.src.startsWith('data:image/svg') ? inner.src : null;
-      return url;
-    }
     function render() {
       const f = frames[idx];
-      const url = imgFor(f);
       stage.innerHTML = '';
-      if (url) {
-        const im = document.createElement('img'); im.src = url; im.alt = f.dataset.place || '';
-        stage.appendChild(im);
-      } else {
-        const ph = document.createElement('div'); ph.className = 'lightbox__ph';
-        ph.innerHTML = `<span class="mono">IMG · ${f.dataset.slot || ''}</span><span class="mono" style="color:var(--faint)">photo coming soon</span>`;
-        stage.appendChild(ph);
-      }
+      const im = document.createElement('img');
+      im.src = f.dataset.src; im.alt = f.dataset.place || '';
+      im.addEventListener('contextmenu', e => e.preventDefault());
+      im.addEventListener('dragstart', e => e.preventDefault());
+      stage.appendChild(im);
       capT.textContent = f.dataset.place || '';
       capC.textContent = f.dataset.coord || '';
     }
@@ -241,8 +238,7 @@
     function go(n) { idx = (n + frames.length) % frames.length; render(); }
 
     frames.forEach((f, i) => {
-      const btn = f.querySelector('.expand');
-      if (btn) btn.addEventListener('click', e => { e.stopPropagation(); open(i); });
+      f.addEventListener('click', () => open(i));
     });
     lb.querySelector('.lightbox__close').addEventListener('click', close);
     lb.querySelector('.prev').addEventListener('click', () => go(idx - 1));
